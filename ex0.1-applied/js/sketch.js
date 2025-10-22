@@ -1,7 +1,6 @@
 let walker;
 let saveAfterMs = 5 * 60 * 1000;
 
-
 function setup() {
   createCanvas(windowWidth, windowHeight);
   // pixelDensity describes how many pixels it packs into an area ( a p5 function )
@@ -37,10 +36,13 @@ class Walker {
   show() {
     stroke(1);
     strokeWeight(4);
+    // This function draws a single dot at appoint x, y location
     point(this.x, this.y);
   }
-  // This function tells the controls the stepping of the walker
+  // This function controls the stepping of the walker
   step() {
+    // this.tx and this.ty start at different points of noise because they are given different , random values
+    // when the walker is created
     this.x = map(noise(this.tx), 0, 1, 0, width);
     this.y = map(noise(this.ty), 0, 1, 0, height);
     this.tx += 0.01;
